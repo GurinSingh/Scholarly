@@ -1,0 +1,6 @@
+.form-floating > label{
+    margin-left: 10px;
+}
+.form-control{
+    margin-bottom: 10px;
+}

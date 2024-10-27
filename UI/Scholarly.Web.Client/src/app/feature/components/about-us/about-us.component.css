@@ -1,0 +1,48 @@
+.image-container{
+    position:relative;
+}
+.image-container > div{
+    left: 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 10px;
+    font-size: 2em;
+    font-weight: 500;
+}
+.information-tile{
+    margin-bottom: 20px;
+}
+.work-experience, .education{
+    padding: 15px 0 15px 0;
+}
+.work-experience-item, .education-item{
+    margin: 0 10px 0 10px;
+    padding: 15px 0 15px 0;
+}
+.work-experience-item:not(:last-child), .education-item:not(:last-child){
+    border-bottom: 1px solid #f0f0f0;
+}
+.basic-info > ul > li > fa-icon, .work-experience-item fa-icon, .education-item fa-icon{
+    width: 20px;
+    display: block;
+    float: left;
+}
+.position, .course {
+    padding: 10px 0 5px 0;
+}
+.position-name, .course-name{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.date, .education-date{
+    padding: 5px 0 5px 0;
+}
+.skillsUsed, .field-of-study{
+    padding: 5px 0 5px 0;
+}
+.description, .education-description{
+    padding: 10px 0 10px 0;
+}
+fa-icon{
+    margin-right: 15px;
+}

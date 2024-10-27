@@ -1,0 +1,7 @@
+@Scholarly.Web_HostAddress = http://localhost:5207
+
+
+
+GET {{Scholarly.Web_HostAddress}}/User/
+Accept: application/json
+###

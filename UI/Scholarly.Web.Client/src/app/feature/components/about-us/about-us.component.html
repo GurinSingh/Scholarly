@@ -1,0 +1,59 @@
+<div id="aboutus" class="mt-5">
+  <div class="row">
+    <!-- left section -->
+    <div class="col-lg-4">
+        <div class="shadow">
+          <div class="image-container">
+            <img class="col-12" src="/assets/GurwinderSingh.png" alt="GurwinderSingh">
+            <div class="text-uppercase">{{user.firstName}} {{user.lastName}}</div>
+          </div>
+            <div class="basic-info">
+                <ul class="text-start list-group list-group-flush">
+                    <li class="list-group-item border-0"><fa-icon [icon]="faIcons.workExperience"></fa-icon>Developer</li>
+                    <li class="list-group-item border-0"><fa-icon [icon]="faIcons.address"></fa-icon>Cambridge</li>
+                    <li class="list-group-item border-0"><fa-icon [icon]="faIcons.email"></fa-icon>{{user.email}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- right section -->
+    <div class="col-lg-8 text-start">
+      <div class="work-experience shadow-sm information-tile px-3">
+          <h2><fa-icon [icon]="faIcons.workExperience"></fa-icon>Work Experience</h2>
+          <div *ngFor="let we of user.workExperiences" class="work-experience-item">
+            <div class="position">
+              <span class="position-name">{{we.position}}</span> - 
+              <span class="company-name">{{we.companyName}}</span>
+            </div>
+            <div class="date">
+              <fa-icon [icon]="faIcons.date"></fa-icon>{{we.startDt.toLocaleDateString()}} - {{we.endDt.toLocaleDateString()}}
+            </div>
+            <div class="skillsUsed">
+              <fa-icon [icon]="faIcons.skills"></fa-icon>{{we.skillsUsed}}
+            </div>
+            <div class="description">
+              {{we.description}}
+            </div>
+          </div>
+        </div>
+        <div class="education shadow-sm information-tile px-3">
+          <h2><fa-icon [icon]="faIcons.education"></fa-icon>Education</h2>
+          <div class="education-item" *ngFor="let e of user.educations">
+            <div class="course">
+              <span class="course-name">{{e.educationName}} </span> -
+              <span class="course-level">{{e.level}}</span>
+            </div>
+            <div class="field-of-study">
+              <fa-icon [icon]="faIcons.fieldOfStudy"></fa-icon>{{e.fieldOfStudy}}
+            </div>
+            <div class="education-date">
+              <fa-icon [icon]="faIcons.date"></fa-icon>{{e.startDt.toLocaleDateString()}} - {{e.endDt.toLocaleDateString()}}
+            </div>
+            <div class="education-description">
+              {{e.description}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
