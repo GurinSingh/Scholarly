@@ -38,7 +38,7 @@ namespace Scholarly.Services.Users
             user.DateCreated = DateTime.UtcNow;
             user.DateModified = DateTime.UtcNow;
 
-            await this._repositoryManager.UserRepository.Insert(user);
+            await this._repositoryManager.UserRepository.InsertAsync(user);
             await this._repositoryManager.UnitOfWork.SaveChangesAsync(cancellationToken);
 
             user = await this._repositoryManager.UserRepository.GetByEmailAsync(createUserDto.Email, cancellationToken);

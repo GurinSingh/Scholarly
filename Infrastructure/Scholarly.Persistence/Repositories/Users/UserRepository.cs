@@ -4,6 +4,7 @@ using Scholarly.Domain.Repositories.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,36 +22,28 @@ namespace Scholarly.Persistence.Repositories.Users
         public async Task<IEnumerable<User>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             return await this._context.Users
-                .Include(u => u.WorkExperiences)
-                .Include(u => u.Educations)
                 .ToListAsync(cancellationToken);
         }
 
         public async Task<User> GetByEmailAsync(string email, CancellationToken cancellationToken = default)
         {
             return await this._context.Users
-                .Include(u => u.WorkExperiences)
-                .Include(u => u.Educations)
                 .FirstOrDefaultAsync(x => x.Email.ToLower() == email.ToLower(), cancellationToken);
         }
 
         public async Task<User> GetByIdAsync(int userId, CancellationToken cancellationToken = default)
         {
             return await this._context.Users
-                .Include(u => u.WorkExperiences)
-                .Include(u => u.Educations)
                 .FirstAsync(u => u.UserId == userId, cancellationToken);
         }
 
         public async Task<User> GetByUserNameAsync(string userName, CancellationToken cancellationToken = default)
         {
             return await this._context.Users
-                .Include(u => u.WorkExperiences)
-                .Include(u => u.Educations)
                 .FirstOrDefaultAsync(u => u.UserName.ToLower() == userName.ToLower(), cancellationToken);
         }
 
-        public async Task Insert(User user)
+        public async Task InsertAsync(User user)
         {
             await this._context.Users.AddAsync(user);
         }
@@ -69,7 +62,6 @@ namespace Scholarly.Persistence.Repositories.Users
         public async Task<IEnumerable<UserEducation>> GetUserEducationsAsync(int userId, CancellationToken cancellationToken)
         {
             return await this._context.UserEducations
-                .Include(u=> u.User)
                 .ToListAsync(cancellationToken);
         }
 
@@ -83,7 +75,6 @@ namespace Scholarly.Persistence.Repositories.Users
         public async Task<IEnumerable<UserWorkExperience>> GetUserWorkExperiencesAsync(int userId, CancellationToken cancellationToken)
         {
             return await this._context.UserWorkExperiences
-                .Include(u=> u.User)
                 .ToListAsync(cancellationToken);
         }
 

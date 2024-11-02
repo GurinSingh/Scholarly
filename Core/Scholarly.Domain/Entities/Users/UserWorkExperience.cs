@@ -12,7 +12,7 @@ namespace Scholarly.Domain.Entities.Users
         {
             this.User = new();
         }
-        public int WorkExperienceId { get; set; }
+        public int UserWorkExperienceId { get; set; }
         public string Position { get; set; }
         public DateTime StartDt { get; set; }
         public DateTime EndDt { get; set; }

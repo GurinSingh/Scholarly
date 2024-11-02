@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,6 +9,9 @@ import { FeatureAboutusModule } from './feature/feature.aboutus.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FeatureUserregistrationModule } from './feature/feature.userregistration.module';
+import { FeatureWritecontentModule } from './feature/feature.writecontent.module';
+import { CoreErrorModule } from './core/core.error.module';
+import { errorHandlerInterceptor } from './interceptors/error-handler.interceptor';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,11 @@ import { FeatureUserregistrationModule } from './feature/feature.userregistratio
   ],
   imports: [
     BrowserModule, HttpClientModule,
-    AppRoutingModule, CoreNavigationModule,FeatureAboutusModule, FeatureUserregistrationModule, FontAwesomeModule, ReactiveFormsModule
+    AppRoutingModule, CoreNavigationModule,FeatureAboutusModule, 
+    FeatureUserregistrationModule, FontAwesomeModule, ReactiveFormsModule,
+    FeatureWritecontentModule, CoreErrorModule
   ],
-  providers: [],
+  providers: [provideHttpClient(withInterceptors([errorHandlerInterceptor]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

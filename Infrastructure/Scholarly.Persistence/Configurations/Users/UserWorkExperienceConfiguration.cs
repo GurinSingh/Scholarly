@@ -13,10 +13,10 @@ namespace Scholarly.Persistence.Configurations.Users
     {
         public void Configure(EntityTypeBuilder<UserWorkExperience> builder)
         {
-            builder.ToTable("WorkExperiences");
+            builder.ToTable("UserWorkExperiences");
 
-            builder.HasKey(e => e.WorkExperienceId);
-            builder.Property(e => e.WorkExperienceId).UseIdentityColumn(1, 1);
+            builder.HasKey(e => e.UserWorkExperienceId);
+            builder.Property(e => e.UserWorkExperienceId).UseIdentityColumn(1, 1);
             builder.Property(e => e.UserId).IsRequired();
             builder.Property(e => e.Position).IsRequired().HasMaxLength(100);
             builder.Property(e => e.StartDt).IsRequired();

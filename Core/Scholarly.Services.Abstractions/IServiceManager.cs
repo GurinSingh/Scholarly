@@ -1,4 +1,5 @@
-﻿using Scholarly.Services.Abstractions.Users;
+﻿using Scholarly.Services.Abstractions.Contents;
+using Scholarly.Services.Abstractions.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace Scholarly.Services.Abstractions
     {
         IUserService UserService { get; }
         IWorkExperienceService WorkExperienceService { get; }
+        IContentService ContentService { get; }
     }
 }

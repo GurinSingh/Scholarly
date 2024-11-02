@@ -1,8 +1,10 @@
 ﻿using Scholarly.Domain.Entities.Users;
 using Scholarly.Domain.Repositories;
 using Scholarly.Domain.Repositories.Common;
+using Scholarly.Domain.Repositories.Contents;
 using Scholarly.Domain.Repositories.Users;
 using Scholarly.Persistence.Repositories.Common;
+using Scholarly.Persistence.Repositories.Contents;
 using Scholarly.Persistence.Repositories.Users;
 using System;
 using System.Collections.Generic;
@@ -17,6 +19,7 @@ namespace Scholarly.Persistence.Repositories
         private readonly Lazy<IUserRepository> _lazyUserRepository;
         private readonly Lazy<IWorkExperienceRepository> _lazyWorkExperienceRepository;
         private readonly Lazy<IGenderRepository> _lazyGenderRepository;
+        private readonly Lazy<IContentRepository> _lazyContentRepository;
 
         private readonly Lazy<IUnitOfWork> _lazyUnitOfWork;
 
@@ -25,12 +28,14 @@ namespace Scholarly.Persistence.Repositories
             this._lazyUserRepository = new Lazy<IUserRepository>(()=> new UserRepository(context));
             this._lazyWorkExperienceRepository = new Lazy<IWorkExperienceRepository>(()=> new WorkExperienceRepository(context));
             this._lazyGenderRepository = new Lazy<IGenderRepository>(()=> new GenderRepository(context));
+            this._lazyContentRepository = new Lazy<IContentRepository>(()=> new ContentRepository(context));
 
             this._lazyUnitOfWork = new Lazy<IUnitOfWork>(()=> new UnitOfWork(context));
         }
         public IUserRepository UserRepository => this._lazyUserRepository.Value;
         public IWorkExperienceRepository WorkExperienceRepository => this._lazyWorkExperienceRepository.Value;
         public IGenderRepository GenderRepository => this._lazyGenderRepository.Value;
+        public IContentRepository ContentRepository => this._lazyContentRepository.Value;
 
         public IUnitOfWork UnitOfWork => this._lazyUnitOfWork.Value;
     }

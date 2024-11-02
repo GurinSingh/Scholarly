@@ -15,8 +15,8 @@ namespace Scholarly.Persistence.Configurations.Users
         {
             builder.ToTable("UserEducations");
 
-            builder.HasKey(e => e.EducationId);
-            builder.Property(e => e.EducationId).UseIdentityColumn(1, 1);
+            builder.HasKey(e => e.UserEducationId);
+            builder.Property(e => e.UserEducationId).UseIdentityColumn(1, 1);
             builder.Property(e => e.UserId).IsRequired();
             builder.Property(e => e.EducationName).IsRequired().HasMaxLength(100);
             builder.Property(e => e.StartDt).IsRequired();

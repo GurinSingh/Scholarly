@@ -9,7 +9,6 @@ namespace Scholarly.Contracts.DTOs.Users
 {
     public class CreateUserWorkExperienceDto
     {
-        public int WorkExperienceId { get; set; }
         public string Position { get; set; }
         public DateTime StartDt { get; set; }
         public DateTime EndDt { get; set; }

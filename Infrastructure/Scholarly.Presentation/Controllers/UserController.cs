@@ -11,7 +11,7 @@ namespace Scholarly.Presentation.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UserController:  ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IServiceManager _serviceManager;
         public UserController(IServiceManager serviceManager)
@@ -32,19 +32,19 @@ namespace Scholarly.Presentation.Controllers
             return Ok(userDto);
         }
         [HttpPost("save")]
-        public async Task<IActionResult> Post([FromBody]CreateUserDto createUserDto, CancellationToken cancellationToken)
+        public async Task<IActionResult> Post([FromBody] CreateUserDto createUserDto, CancellationToken cancellationToken)
         {
             var userDto = await this._serviceManager.UserService.CreateAsync(createUserDto, cancellationToken);
             return Ok(userDto);
         }
         [HttpPost("education")]
-        public async Task<IActionResult> Post([FromBody]List<CreateUserEducationDto> createUserEducationDto, CancellationToken cancellationToken)
+        public async Task<IActionResult> Post([FromBody] List<CreateUserEducationDto> createUserEducationDto, CancellationToken cancellationToken)
         {
             var userEducationDto = await this._serviceManager.UserService.CreateUserEducationsAsync(createUserEducationDto, cancellationToken);
-            return Ok(userEducationDto);   
+            return Ok(userEducationDto);
         }
         [HttpPost("workexperience")]
-        public async Task<IActionResult> Post([FromBody]List<CreateUserWorkExperienceDto> createUserWorkExperienceDto, CancellationToken cancellationToken)
+        public async Task<IActionResult> Post([FromBody] List<CreateUserWorkExperienceDto> createUserWorkExperienceDto, CancellationToken cancellationToken)
         {
             var userWorkExperience = await this._serviceManager.UserService.CreateUserWorkExperiencesAsync(createUserWorkExperienceDto, cancellationToken);
             return Ok(null);

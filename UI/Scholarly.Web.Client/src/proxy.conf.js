@@ -5,7 +5,8 @@ const PROXY_CONFIG = [
       '/user',
       '/user/save',
       '/user/education',
-      '/user/workexperience'
+      '/user/workexperience',
+      '/content/save'
     ],
     target: "http://localhost:5207",
     secure: false

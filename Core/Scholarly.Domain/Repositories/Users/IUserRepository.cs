@@ -14,7 +14,7 @@ namespace Scholarly.Domain.Repositories.Users
         Task<User> GetByIdAsync(int userId, CancellationToken cancellationToken = default);
         Task<User> GetByUserNameAsync(string userName, CancellationToken cancellationToken = default);
         Task<User> GetByEmailAsync(string email, CancellationToken cancellationToken = default);
-        Task Insert(User user);
+        Task InsertAsync(User user);
         void Update(User user);
         void Delete(User user);
         #endregion
