@@ -127,15 +127,14 @@ export class MapToHtmlDirective implements OnChanges {
           if(!popover)
             return;
 
-          if(article.id == null || article.id == 0){
+          if(article.introduction == null){
             article.title = 'Oops';
             article.introduction = 'This article does not exist';
           }
 
           popover.querySelector('.popover-title').innerHTML = article.title;
 
-          let htmlEncodedString = this.scholarlyMappingService.mapToHtml(<string>article?.introduction);
-          popover.querySelector('.popover-content').innerHTML = htmlEncodedString;
+          popover.querySelector('.popover-content').innerHTML = this.scholarlyMappingService.mapToHtml(<string>article?.introduction);
         }
         
         let loadedData = this._container.loadedData as KeyValueDictionary<string, article>;
