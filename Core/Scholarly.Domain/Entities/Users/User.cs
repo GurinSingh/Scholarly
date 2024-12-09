@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Scholarly.Domain.Entities.Common;
-using Scholarly.Domain.Entities.Contents;
+using Scholarly.Domain.Entities.Articles;
 
 namespace Scholarly.Domain.Entities.Users
 {
@@ -14,7 +14,7 @@ namespace Scholarly.Domain.Entities.Users
         {
             this.WorkExperiences = new HashSet<UserWorkExperience>();
             this.Educations = new HashSet<UserEducation>();
-            this.Contents = new HashSet<Content>();
+            this.Articles = new HashSet<Article>();
             this.Gender = new();
         }
         public int UserId { get; set; }
@@ -28,7 +28,7 @@ namespace Scholarly.Domain.Entities.Users
 
         public virtual ICollection<UserWorkExperience> WorkExperiences { get; set; }
         public virtual ICollection<UserEducation> Educations { get; set; }
-        public virtual ICollection<Content> Contents { get; set; }
+        public virtual ICollection<Article> Articles { get; set; }
 
         public int GenderId { get; set; }
         public virtual Gender Gender { get; set; }

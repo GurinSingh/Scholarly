@@ -11,7 +11,6 @@ export class ErrorComponent implements OnInit {
   public error:errorResponse = <errorResponse>{};
  
   ngOnInit(): void {
-    debugger;
     this.error = history.state.error;
 
     if(this.error == undefined || this.error == null)

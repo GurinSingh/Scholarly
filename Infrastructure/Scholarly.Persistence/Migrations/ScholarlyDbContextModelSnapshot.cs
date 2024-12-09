@@ -25,6 +25,127 @@ namespace Scholarly.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Scholarly.Domain.Entities.Articles.Article", b =>
+                {
+                    b.Property<int>("ArticleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArticleId"));
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(-1)
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Introduction")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Selector")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("ArticleId");
+
+                    SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("ArticleId"), false);
+
+                    b.HasIndex("CreatedByUserId");
+
+                    b.HasIndex("Selector")
+                        .IsUnique();
+
+                    SqlServerIndexBuilderExtensions.IsClustered(b.HasIndex("Selector"));
+
+                    b.ToTable("Articles", (string)null);
+                });
+
+            modelBuilder.Entity("Scholarly.Domain.Entities.Articles.ArticleImage", b =>
+                {
+                    b.Property<int>("ArticleImageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArticleImageId"));
+
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("ImageData")
+                        .IsRequired()
+                        .HasMaxLength(-1)
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("MimeType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Selector")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.HasKey("ArticleImageId");
+
+                    SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("ArticleImageId"), false);
+
+                    b.HasIndex("ArticleId");
+
+                    b.HasIndex("Selector")
+                        .IsUnique();
+
+                    SqlServerIndexBuilderExtensions.IsClustered(b.HasIndex("Selector"));
+
+                    b.ToTable("ArticleImages", (string)null);
+                });
+
+            modelBuilder.Entity("Scholarly.Domain.Entities.Articles.ArticleModifiedByUserMap", b =>
+                {
+                    b.Property<int>("ArticleModifiedByUserMapId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ArticleModifiedByUserMapId"));
+
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DateModified")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
+
+                    b.Property<int>("ModifiedByUserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ArticleModifiedByUserMapId");
+
+                    b.HasIndex("ArticleId");
+
+                    b.HasIndex("ModifiedByUserId");
+
+                    b.ToTable("ArticleModifiedByUserMap");
+                });
+
             modelBuilder.Entity("Scholarly.Domain.Entities.Common.Gender", b =>
                 {
                     b.Property<int>("GenderId")
@@ -53,71 +174,6 @@ namespace Scholarly.Persistence.Migrations
                             GenderId = 2,
                             GenderName = "Female"
                         });
-                });
-
-            modelBuilder.Entity("Scholarly.Domain.Entities.Contents.Content", b =>
-                {
-                    b.Property<int>("ContentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContentId"));
-
-                    b.Property<string>("ContentDescription")
-                        .IsRequired()
-                        .HasMaxLength(-1)
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContentTitle")
-                        .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
-
-                    b.Property<int>("CreatedByUserId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DateModified")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.HasKey("ContentId");
-
-                    b.HasIndex("CreatedByUserId");
-
-                    b.ToTable("Contents", (string)null);
-                });
-
-            modelBuilder.Entity("Scholarly.Domain.Entities.Contents.ContentModifiedByUserMap", b =>
-                {
-                    b.Property<int>("ContentModifiedByUserMapId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContentModifiedByUserMapId"));
-
-                    b.Property<int>("ContentId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("DateModified")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("GETDATE()");
-
-                    b.Property<int>("ModifiedByUserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ContentModifiedByUserMapId");
-
-                    b.HasIndex("ContentId");
-
-                    b.HasIndex("ModifiedByUserId");
-
-                    b.ToTable("ContentModifiedByUserMap");
                 });
 
             modelBuilder.Entity("Scholarly.Domain.Entities.Users.User", b =>
@@ -169,10 +225,13 @@ namespace Scholarly.Persistence.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("UserId");
+
+                    SqlServerKeyBuilderExtensions.IsClustered(b.HasKey("UserId"), false);
 
                     b.HasIndex("Email")
                         .IsUnique();
@@ -181,6 +240,8 @@ namespace Scholarly.Persistence.Migrations
 
                     b.HasIndex("UserName")
                         .IsUnique();
+
+                    SqlServerIndexBuilderExtensions.IsClustered(b.HasIndex("UserName"));
 
                     b.ToTable("Users", (string)null);
 
@@ -360,7 +421,7 @@ namespace Scholarly.Persistence.Migrations
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DateModified = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Description = "Gained a working experience on latest technologies such as Azure DevOps, Angular, MediatR etc",
-                            EndDt = new DateTime(2024, 11, 1, 23, 39, 57, 475, DateTimeKind.Utc).AddTicks(5410),
+                            EndDt = new DateTime(2024, 12, 8, 0, 8, 37, 245, DateTimeKind.Utc).AddTicks(6110),
                             IsActive = false,
                             IsCurrent = true,
                             Position = "Software Developer",
@@ -400,7 +461,7 @@ namespace Scholarly.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Scholarly.Domain.Entities.Contents.Content", b =>
+            modelBuilder.Entity("Scholarly.Domain.Entities.Articles.Article", b =>
                 {
                     b.HasOne("Scholarly.Domain.Entities.Users.User", "CreatedBy")
                         .WithMany()
@@ -411,11 +472,22 @@ namespace Scholarly.Persistence.Migrations
                     b.Navigation("CreatedBy");
                 });
 
-            modelBuilder.Entity("Scholarly.Domain.Entities.Contents.ContentModifiedByUserMap", b =>
+            modelBuilder.Entity("Scholarly.Domain.Entities.Articles.ArticleImage", b =>
                 {
-                    b.HasOne("Scholarly.Domain.Entities.Contents.Content", null)
+                    b.HasOne("Scholarly.Domain.Entities.Articles.Article", "Article")
+                        .WithMany("Images")
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Article");
+                });
+
+            modelBuilder.Entity("Scholarly.Domain.Entities.Articles.ArticleModifiedByUserMap", b =>
+                {
+                    b.HasOne("Scholarly.Domain.Entities.Articles.Article", null)
                         .WithMany()
-                        .HasForeignKey("ContentId")
+                        .HasForeignKey("ArticleId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -457,6 +529,11 @@ namespace Scholarly.Persistence.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Scholarly.Domain.Entities.Articles.Article", b =>
+                {
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("Scholarly.Domain.Entities.Users.User", b =>

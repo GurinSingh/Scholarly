@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Scholarly.Domain.Entities.Common;
-using Scholarly.Domain.Entities.Contents;
+using Scholarly.Domain.Entities.Articles;
 using Scholarly.Domain.Entities.Users;
 
 namespace Scholarly.Persistence
@@ -13,7 +13,7 @@ namespace Scholarly.Persistence
         public DbSet<UserWorkExperience> UserWorkExperiences { get; set; }
         public DbSet<UserEducation> UserEducations { get; set; }
         public DbSet<Gender> Genders { get; set; }
-        public DbSet<Content> Contents { get; set; }
+        public DbSet<Article> Articles { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -80,7 +80,6 @@ export class UserRegistrationComponent {
     );
   }
   saveEducation(){
-    debugger;
     this.httpClient.post(this.urls.saveEducation, this.userEducationForm.value.userEducation).subscribe(
       (response)=>{
         console.log(response);
@@ -92,7 +91,6 @@ export class UserRegistrationComponent {
   }
   
   saveWorkExperience(){
-    debugger;
     console.log(this.userWorkExperienceForm.value);
     this.httpClient.post(this.urls.saveWorkExperience, this.userWorkExperienceForm.value.userWorkExperience).subscribe(
       (response)=>{

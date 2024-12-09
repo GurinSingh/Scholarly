@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './feature/components/about-us/about-us.component';
 import { UserRegistrationComponent } from './feature/components/user-registration/user-registration.component';
-import { WriteContentComponent } from './feature/write-content/write-content.component';
 import { ErrorComponent } from './core/components/error/error.component';
+import { WriteArticleComponent } from './feature/components/write-article/write-article.component';
+import { ViewArticleComponent } from './feature/components/view-article/view-article.component';
 
 const routes: Routes = [{
   path: 'aboutus/:userName',
@@ -18,8 +19,12 @@ const routes: Routes = [{
   component: UserRegistrationComponent
 },
 {
-  path: 'writecontent',
-  component: WriteContentComponent
+  path: 'write/article',
+  component: WriteArticleComponent
+},
+{
+  path: 'view/article/:selector',
+  component: ViewArticleComponent
 },
 {
   path: '**',

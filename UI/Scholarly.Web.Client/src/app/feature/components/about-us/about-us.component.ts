@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { user } from '../../models/about-us/feature.user.model';
 import { ActivatedRoute } from '@angular/router';
-import { faBriefcase, faCalendarDay,faGears,faGraduationCap,faSchool,faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-about-us',
@@ -12,21 +11,12 @@ import { faBriefcase, faCalendarDay,faGears,faGraduationCap,faSchool,faEnvelope,
 export class AboutUsComponent implements OnInit {
   private url:string = "/user";
   public user:user = <any>{};
-  faIcons={
-    workExperience: faBriefcase,
-    date: faCalendarDay,
-    skills: faGears,
-    education: faGraduationCap,
-    fieldOfStudy: faSchool,
-    email: faEnvelope,
-    address:faLocationDot
-  }
+  
   
   constructor(private http:HttpClient,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params=>{
-      debugger;
       let userName:string | null = params.get('userName');
 
       if(userName != null)
@@ -53,6 +43,6 @@ export class AboutUsComponent implements OnInit {
       error: (err:any)=>{
         console.log(err);
       }
-    })
+    });
   }
 }

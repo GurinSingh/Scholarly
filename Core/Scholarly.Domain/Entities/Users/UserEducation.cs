@@ -10,7 +10,7 @@ namespace Scholarly.Domain.Entities.Users
     {
         public UserEducation()
         {
-            this.User = new User();
+            this.User = new();
         }
         public int UserEducationId { get; set; }
         public string EducationName { get; set; }

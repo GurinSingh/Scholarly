@@ -6,9 +6,10 @@ import { errorResponse } from '../core/models/core.errorResponse.model';
 
 export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
-
+ 
   return next(req).pipe(
     catchError((error)=>{
+      debugger;
       let errorResponse: errorResponse = {
         statusCode: error.status,
         title: error.statusText,

@@ -10,6 +10,7 @@ import { ErrorComponent } from './components/error/error.component';
   ],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:[ErrorComponent]
 })
 export class CoreErrorModule { }

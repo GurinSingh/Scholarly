@@ -1,12 +1,12 @@
 const PROXY_CONFIG = [
   {
     context: [
-      '/article',
+      '/article/get',
       '/user',
       '/user/save',
       '/user/education',
       '/user/workexperience',
-      '/content/save'
+      '/article/save',
     ],
     target: "http://localhost:5207",
     secure: false

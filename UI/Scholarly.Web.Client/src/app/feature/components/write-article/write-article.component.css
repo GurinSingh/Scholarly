@@ -1,0 +1,16 @@
+.content-section{
+    display: block;
+}
+
+.content-image{
+    padding: 5px;
+}
+    .content-image > img{
+        max-width: 100%;
+    }
+
+.content-info{
+    color: blue;
+    cursor: pointer;
+}
+    

@@ -1,5 +1,5 @@
 ﻿using Scholarly.Domain.Repositories.Common;
-using Scholarly.Domain.Repositories.Contents;
+using Scholarly.Domain.Repositories.Articles;
 using Scholarly.Domain.Repositories.Users;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ namespace Scholarly.Domain.Repositories
         public IUserRepository UserRepository { get; }
         public IWorkExperienceRepository WorkExperienceRepository { get; }
         public IGenderRepository GenderRepository { get; }
-        public IContentRepository ContentRepository { get; }
+        public IArticleRepository ArticleRepository { get; }
 
         public IUnitOfWork UnitOfWork { get; }
     }

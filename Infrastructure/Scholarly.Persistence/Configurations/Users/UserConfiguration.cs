@@ -15,11 +15,11 @@ namespace Scholarly.Persistence.Configurations.Users
         {
             builder.ToTable("Users");
 
-            builder.HasKey(e => e.UserId);
+            builder.HasKey(e => e.UserId).IsClustered(false);
             builder.Property(e => e.UserId).UseIdentityColumn(1, 1);
             builder.Property(e => e.FirstName).HasMaxLength(50).IsRequired();
             builder.Property(e => e.LastName).HasMaxLength(50).IsRequired();
-            builder.Property(e => e.UserName).HasMaxLength(100);
+            builder.Property(e => e.UserName).HasMaxLength(100).IsRequired();
             builder.Property(e => e.Email).IsRequired().HasMaxLength(100);
             builder.Property(e => e.PhoneNumber).HasMaxLength(10);
             builder.Property(e => e.DOB);
@@ -30,7 +30,7 @@ namespace Scholarly.Persistence.Configurations.Users
             builder.Property(e => e.DateModified).IsRequired();
 
             builder.HasIndex(e => e.UserName)
-                .IsUnique().HasFilter(null);
+                .IsUnique().IsClustered(true);
 
             builder.HasIndex(e => e.Email)
                 .IsUnique();
