@@ -1,0 +1,39 @@
+.sticky-top-position{
+    top: 10px;
+}
+
+.content-section{
+    display: block;
+}
+
+.content-info{
+    color: blue;
+    cursor: pointer;
+}
+
+.content-image{
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+}
+.content-image[pull-left]{
+    float: left;
+}
+.content-image[pull-right]{
+    float: right;
+}
+    .content-image > img{
+        max-width: 100%;
+    }
+    .content-image > .content-image-caption{
+        text-align: center;
+        font-size: small;
+        font-style: italic;
+    }
+    
+    
+
+
+
+    

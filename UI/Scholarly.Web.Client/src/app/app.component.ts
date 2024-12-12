@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { APP_SUB_ROUTES } from './core/constants/APP_ROUTES';
 
 interface WeatherForecast {
   date: string;
@@ -16,7 +17,10 @@ interface WeatherForecast {
 export class AppComponent {
   public forecasts: WeatherForecast[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
   title = 'Scholarly.Web.Client';
+
+  
 }

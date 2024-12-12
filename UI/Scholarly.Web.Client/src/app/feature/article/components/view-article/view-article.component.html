@@ -1,0 +1,20 @@
+<div class="container-fluid mt-5" id="viewArticle">
+    <div class="row">
+        <div class="col-md-2">
+            <div class="sticky-top sticky-top-position">
+                <nav class="navbar sticky-top">
+                    <h5><u>On this page</u></h5>
+                    <div class="container-fluid" navigation-tree>                        
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div id="articleTitle">
+                <h2>{{article.title}}</h2>
+            </div>
+            <div class="article-introduction" [MapToHtml]="article.introduction"></div>
+            <div class="article-description" PageNavigationTarget [MapToHtml]="article.description"></div>
+        </div>
+    </div>
+</div>

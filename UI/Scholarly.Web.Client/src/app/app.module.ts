@@ -3,27 +3,29 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoreNavigationModule } from './core/core.navigation.module';
-import { FeatureAboutusModule } from './feature/feature.aboutus.module';
+import { ArticleModule, UserModule } from './feature';
+import { LayoutModule } from './layout';
+import { SharedModule } from './shared';
+import { PagesModule } from './pages';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FeatureUserregistrationModule } from './feature/feature.userregistration.module';
-import { CoreErrorModule } from './core/core.error.module';
-import { errorHandlerInterceptor } from './interceptors/error-handler.interceptor';
-import { FeatureWritearticleModule } from './feature/feature.writearticle.module';
-import { FeatureViewarticleModule } from './feature/feature.viewarticle.module';
+import { CoreModule } from './core/core.module';
+import { ErrorHandlerInterceptor } from './core';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ImageUploaderComponent } from './shared/image-uploader/image-uploader.component';
 import { PopoverModule } from 'ngx-bootstrap/popover';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({ declarations: [
-        AppComponent
+        AppComponent,
     ],
     bootstrap: [AppComponent],
-    imports: [BrowserModule, AppRoutingModule, CoreNavigationModule, FeatureAboutusModule,
-        FeatureUserregistrationModule, ReactiveFormsModule,
-        FeatureWritearticleModule, CoreErrorModule, FeatureViewarticleModule,
-        ModalModule.forRoot(), ImageUploaderComponent, PopoverModule.forRoot(),
+    imports: [BrowserModule, AppRoutingModule, ArticleModule, UserModule, RouterModule,
+        SharedModule,
+        LayoutModule,
+        ReactiveFormsModule,
+        CoreModule,
+        PagesModule,
+        ModalModule.forRoot(), PopoverModule.forRoot(),
         ],
-    providers: [provideHttpClient(withInterceptors([errorHandlerInterceptor]),), provideHttpClient(withInterceptorsFromDi())] })
+    providers: [provideHttpClient(withInterceptors([ErrorHandlerInterceptor]),), provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }

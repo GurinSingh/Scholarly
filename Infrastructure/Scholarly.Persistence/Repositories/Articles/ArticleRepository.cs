@@ -19,11 +19,11 @@ namespace Scholarly.Persistence.Repositories.Articles
         }
         public async Task<Article> GetByIdAsync(int articleId, CancellationToken cancellationToken = default)
         {
-            return await this._context.Articles.FirstOrDefaultAsync(c=> c.ArticleId == articleId);
+            return await this._context.Articles.FirstAsync(c=> c.ArticleId == articleId);
         }
         public async Task<Article> GetBySelectorAsync(string selector, CancellationToken cancellationToken = default)
         {
-            return await this._context.Articles.Where(c => c.Selector == selector).FirstOrDefaultAsync();
+            return await this._context.Articles.Where(c => c.Selector == selector).FirstAsync();
         }
         public async Task<IEnumerable<Article>> GetAllAsync(CancellationToken cancellationToken = default)
         {

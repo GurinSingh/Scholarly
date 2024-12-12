@@ -1,0 +1,59 @@
+<div class="row">
+    <div id="write-article" class="mt-5 mx-auto border border-1 rounded shadow-sm col-6 p-3">
+        <div class="header">
+            <p>Ensure to do a proper research before writing a article. Make sure it is updated and properly sited according to the APA guidelines.</p>
+        </div>
+    
+        <form [formGroup]="writeArticleForm" (ngSubmit)="saveArticle()">
+            <div>
+                Title
+            </div>
+            <div>
+                <input formControlName="title" class="form-control col-12">
+            </div>
+            <div>
+                Introduction
+            </div>
+            <div>
+                <textarea style="height: 200px;" formControlName="introduction" class="form-control col-12"></textarea>
+            </div>
+            <div>
+                Description
+            </div>
+            <div>
+                <textarea style="height: 1000px;" formControlName="description" class="form-control col-12"></textarea>
+            </div>
+            <div>
+                <input type="button" value="Upload" (click)="openUploader()">
+            </div>
+            <div class="col-12 text-end">
+                <input type="submit" value="Add" class="btn btn-default">
+            </div>
+        </form>
+    
+    </div>
+    <div id="write-article-preview" class="mt-5 mx-auto border border-1 rounded shadow-sm col-6 p-3">
+        <div class="text-bold">
+            <p class="bold">Preview</p>
+        </div>
+        <view-article [article]="writeArticleForm.value"></view-article>
+    </div>
+</div>
+<!-- <div class="row mt-4" *ngIf="uploadedData.length > 0">
+    <div class="col-6">
+        <table class="table">
+            <thead>
+                <th class="w-25"></th>
+                <th class="w-50">Selector</th>
+                <th class="w-25"></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of uploadedData;">
+                    <td><img [src]="data.url" alt="Image uploaded" style="width: 100%;"></td>
+                    <td>{{data.title}}</td>
+                    <td>del</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> -->
