@@ -1,8 +1,10 @@
-import { Component, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { ArticleService } from '../../../../core';
 import { ArticleImageUploadService } from '../../../../core';
 import { ImageUploaderComponent } from '../../../../shared';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ArticleContentComponent } from '../../../../shared/components/article-content/article-content/article-content.component';
 
 @Component({
   selector: 'write-article',
@@ -10,10 +12,9 @@ import { ImageUploaderComponent } from '../../../../shared';
   styleUrl: './write-article.component.css'
 })
 export class WriteArticleComponent implements OnInit {
-  uploadedData!: any[];
-
+  modalRef?: BsModalRef;
   constructor(private formBuilder: FormBuilder, private articleService: ArticleService
-    ,private _imageUploadService: ArticleImageUploadService) { }
+    , private _content: BsModalService) { }
 
   ngOnInit(): void {
   }
@@ -31,7 +32,12 @@ export class WriteArticleComponent implements OnInit {
     this.articleService.insert(<any>this.writeArticleForm.value).subscribe();
   }
 
-  openUploader(): void{
-    this._imageUploadService.openUploader();
+  openContent(): void{
+    this.modalRef = this._content.show(ArticleContentComponent,{
+      backdrop: 'static',
+      class: 'modal-xl'
+    });
+
+
   }
 }

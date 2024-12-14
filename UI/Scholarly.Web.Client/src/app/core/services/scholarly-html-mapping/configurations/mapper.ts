@@ -3,23 +3,20 @@ import { ScholarlyElements } from "./scholarly-elements";
 
 export class Mapper{
     private _scholarlyEncodedString: string
-    private _configurations: ScholarlyElements;
+    private _scholarlyElements: ScholarlyElements;
   
-    constructor(scholarlyEncodedString: string, scholarlyElementConfiguration: ScholarlyElements){
+    constructor(scholarlyEncodedString: string, scholarlyElements: ScholarlyElements){
       this._scholarlyEncodedString = scholarlyEncodedString;
-      this._configurations = scholarlyElementConfiguration;
+      this._scholarlyElements = scholarlyElements;
     }
   
     getHtml(){
-      let scholarlyElements: IScholarlyElement[]= this._configurations.getScholarlyElements();
-  
-      scholarlyElements.forEach(scholarlyElement=>{
-        let matches = this._scholarlyEncodedString.matchAll(scholarlyElement.regex);
-  
-        Array.from(matches).forEach(match=>{
-          let stringEncodedhtml:string = scholarlyElement.render(match[0]);
-          this._scholarlyEncodedString = this._scholarlyEncodedString.replace(match[0], stringEncodedhtml);
-  
+      let scholarlyElementTypes: IScholarlyElement[]= this._scholarlyElements.getScholarlyElements();
+      
+      scholarlyElementTypes.forEach((elementType: IScholarlyElement)=>{
+        elementType.getAll().forEach((scholarlyElement: string)=> {
+          let stringEncodedhtml:string = elementType.render(scholarlyElement);
+          this._scholarlyEncodedString = this._scholarlyEncodedString.replace(scholarlyElement, stringEncodedhtml);
         });
       });
   

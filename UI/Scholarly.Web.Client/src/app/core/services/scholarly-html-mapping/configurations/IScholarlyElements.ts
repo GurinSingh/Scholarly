@@ -1,11 +1,11 @@
 import { KeyValueDictionary } from "../../../utilities/keyValuePairDictionary";
 
 export interface IScholarlyElement{
-    htmlTag: string;
-    scholarlyTag: string;
-    wrapper: string;
-    attributes: KeyValueDictionary<string, string>;
-    cssClass: string;
-    regex: RegExp
-    render: (ScholarlyElementString: string)=> string;
+    readonly htmlTag: string;
+    readonly scholarlyTag: string;
+    readonly wrapper: string;
+    readonly attributes: KeyValueDictionary<string, string>;
+    readonly cssClass: string;
+    readonly getAll: ()=> string[];
+    readonly render: (ScholarlyElementString: string)=> string;
   }

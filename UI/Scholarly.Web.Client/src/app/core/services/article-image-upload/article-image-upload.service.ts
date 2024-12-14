@@ -10,7 +10,7 @@ type imageData={selector:string, url: string, caption: string, image: File };
 })
 export class ArticleImageUploadService {
   private modalRef?: BsModalRef;
-  uploadedData$: EventEmitter<imageData> = new EventEmitter<imageData>();//this.imagesSubject.asObservable();
+  uploadedData$: EventEmitter<imageData> = new EventEmitter<imageData>();
   private _images:imageData[] = <any>[];
 
   constructor(private _modalService: BsModalService) {
@@ -31,7 +31,7 @@ export class ArticleImageUploadService {
   }
 
   closeUploader(){
-    this._modalService.hide();
+    this._modalService.hide(this.modalRef?.id);
   }
 
   getAllImages(): imageData[]{

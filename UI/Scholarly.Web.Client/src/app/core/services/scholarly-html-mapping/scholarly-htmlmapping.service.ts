@@ -10,7 +10,7 @@ export class ScholarlyHTMLMappingService {
   constructor() { }
 
   public mapToHtml(scholarlyEncodedString: string): string{
-    let mapper = new Mapper(scholarlyEncodedString, new ScholarlyElements());
+    let mapper = new Mapper(scholarlyEncodedString, new ScholarlyElements(scholarlyEncodedString));
     return mapper.getHtml();
   }
 }

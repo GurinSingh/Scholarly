@@ -4,11 +4,16 @@ import { ScholarlySection } from "./elements/scholarly-section";
 import { IScholarlyElement } from "./IScholarlyElements";
 
 export class ScholarlyElements{
-    getScholarlyElements(): IScholarlyElement[]{
-      return [
-        new ScholarlyInfo(),
-        new ScholarlySection(),
-        new ScholarlyImage()
-      ];
-    }
+  private _scholarlyEncodedString: string;
+  constructor(scholarlyEncodedString: string) {
+    this._scholarlyEncodedString = scholarlyEncodedString;
   }
+
+  getScholarlyElements(): IScholarlyElement[]{
+    return [
+      new ScholarlyInfo(this._scholarlyEncodedString),
+      new ScholarlySection(this._scholarlyEncodedString),
+      new ScholarlyImage(this._scholarlyEncodedString)
+    ];
+  }
+}

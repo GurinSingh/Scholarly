@@ -9,7 +9,7 @@ import { ArticleService } from '../../../../core';
   selector: 'view-article',
   templateUrl: './view-article.component.html',
   styleUrl: './view-article.component.css',
-  encapsulation: ViewEncapsulation.ShadowDom
+  //encapsulation: ViewEncapsulation.ShadowDom
 })
 
 export class ViewArticleComponent implements OnInit {

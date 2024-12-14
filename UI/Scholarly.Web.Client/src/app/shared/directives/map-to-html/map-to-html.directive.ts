@@ -170,7 +170,9 @@ export class MapToHtmlDirective implements OnChanges {
 
       let imageData = this.articleImageService.getImage(selector);
 
-      scholarlyElement.childNodes[0].src = imageData.url;
+      let img = scholarlyElement.childNodes[0];
+      img.src = imageData.url;
+      img.alt = imageData.caption;
       
       //inserting caption
       let caption = document.createElement('div');

@@ -1,0 +1,6 @@
+#article-images th:first-child{
+    width: 10%;
+}
+    #article-images td img{
+        width: 100%;
+    }

@@ -13,8 +13,8 @@ export class PageNavigationRendererDirective implements AfterViewInit, OnDestroy
   ngAfterViewInit(): void {
     this.mutationObserver = new MutationObserver((mutations)=>{
       mutations.forEach((mutation)=>{
-        if((mutation.addedNodes.length == 0 || !Array.from(mutation.addedNodes).every(this._isNavigationElement))
-          && (mutation.removedNodes.length == 0 || !Array.from(mutation.removedNodes).every(this._isNavigationElement)))
+        if((mutation.addedNodes.length == 0 || !Array.from(mutation.addedNodes).some(this._isNavigationElement))
+          && (mutation.removedNodes.length == 0 || !Array.from(mutation.removedNodes).some(this._isNavigationElement)))
           return;
 
         this._updateTree(this.elementRef.nativeElement.innerHTML);
@@ -32,7 +32,13 @@ export class PageNavigationRendererDirective implements AfterViewInit, OnDestroy
 
   private _updateTree(targetContent: string){
     let nodes = this.elementRef.nativeElement.querySelectorAll('['+ APP_CONSTANTS.PAGE_NAVIGATION_NODE_ATTR +']');
+    if(nodes.length == 0)
+      return;
+
     let container:any = document.querySelector('['+ APP_CONSTANTS.PAGE_NAVIGATION_TREE_CONTAINER_ATTR+']');
+    if(!container)
+      return;
+
     container.classList.add('list-group', 'list-group-horizontal', 'list-group-flush');
     container.innerHTML = '';
 

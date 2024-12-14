@@ -6,12 +6,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MapToHtmlDirective } from '../../shared';
 import { PageNavigationRendererDirective } from '../../shared';
 import { ArticleRoutingModule } from './article-routing.module';
+import { ArticleContentComponent } from '../../shared/components/article-content/article-content/article-content.component';
 
 
 
 @NgModule({
   declarations: [ViewArticleComponent,
-    WriteArticleComponent,
+    WriteArticleComponent
   ],
   imports: [
     CommonModule,

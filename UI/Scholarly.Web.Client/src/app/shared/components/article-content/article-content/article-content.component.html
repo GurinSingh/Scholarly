@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h4>Article Content</h4>
+</div>
+<div class="modal-body">
+    <input type="button" value="Upload" (click)="openUploader()">
+    <div class="row">
+        <table class="table table-bordered table-sm" id="article-images">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Selector</th>
+                    <th>Caption</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let image of images">
+                    <td><img src="{{image.url}}" alt="{{image.caption}}"></td>
+                    <td>{{image.selector}}</td>
+                    <td>{{image.caption}}</td>
+                    <td>coming soon</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" (click)="closeModal()" data>Cancel</button>
+</div>
