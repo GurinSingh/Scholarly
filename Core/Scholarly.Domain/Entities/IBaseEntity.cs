@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Scholarly.Domain.Entities
 {
-    public class BaseEntity
+    public interface IBaseEntity
     {
-        public DateTime DateCreated { get; set; }
-        public DateTime DateModified { get; set; }
-        public bool IsActive { get; set; }
+        DateTime DateCreated { get; set; }
+        DateTime DateModified { get; set; }
+        bool IsActive { get; set; }
     }
 }
